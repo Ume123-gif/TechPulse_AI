@@ -1,23 +1,34 @@
-# 🚀 Tech Pulse AI: Sentiment-Driven News Aggregator & Analyser
-An intelligent dashboard that scrapes, analyzes, and visualizes the "vibe" of the tech industry in real-time.
+# 🚀 TechPulse_AI — News Sentiment Aggregator
+A modular Python pipeline that scrapes live tech headlines, scores sentiment polarity, and visualizes trends through an interactive dashboard.
 
-# 💡 The Problem
-Tech news moves fast. It’s hard to tell if the industry is feeling optimistic or skeptical about new trends (like AI or Crypto) just by glancing at headlines. Also, it is very cumbersome to skim through the whole lot of news so its better to read only what's important that is the headlines!
+# 💡 What It Does
+Tech news moves fast and reading through dozens of headlines to gauge industry sentiment is inefficient. TechPulse_AI scrapes headlines from Hacker News, classifies them as positive, negative, or neutral using NLP, and lets you filter by keyword to explore sentiment trends across topics like "AI", "crypto", or "Web3".
 
-# 🛠️ The Solution
-I built a modular Python pipeline that:
+# Tech Stack
+Python — core pipeline
+BeautifulSoup4 — HTML parsing and headline scraping
+TextBlob — lexicon-based sentiment polarity scoring
+Streamlit — interactive dashboard with real-time keyword filtering
+Pandas — data filtering and metric calculation
 
-Scrapes live headlines from sources like Hacker News using BeautifulSoup4. (Currently optimised for only Hacker News website)
+# Architecture
+The project is split into two reusable OOP classes:
+TechScraper — handles HTTP requests, HTML parsing, and error handling for failed/missing selectors
+TechAnalyser — takes scraped headlines, scores polarity via TextBlob, and applies threshold-based sentiment labels (positive / negative / neutral)
+Streamlit Session State is used to persist scraped data across user interactions without re-fetching on every filter change.
 
-Analyzes sentiment polarity using TextBlob (NLP).
+# Current Limitations
+Scrapes Hacker News only (single source)
+Sentiment scoring uses TextBlob's lexicon model — no custom-trained classifier yet
+No caching or scheduled refresh; data is fetched on demand when the app is run
 
-Visualizes data via an interactive Streamlit dashboard with real-time keyword filtering.
+# How To Run
+bashgit clone https://github.com/Ume123-gif/TechPulse_AI
+cd TechPulse_AI
+pip install -r requirements.txt
+streamlit run app.py
 
-# 🏗️ Architecture
-Object-Oriented Design: Separate classes for Scraping and Analysis to ensure reusability.
-
-State Management: Utilized Streamlit Session State for high-performance data persistence.
-
-Data Science Stack: Powered by Pandas for dynamic filtering and metric calculation.
-
-Dynamic Exploration: Implemented a real-time Keyword Filter allowing users to isolate specific tech trends (e.g., "OpenAI", "Web3") across the entire dataset instantly.
+# Planned Improvements
+Add second/third news source (Reddit r/technology, TechCrunch RSS)
+Replace TextBlob with a trained scikit-learn classifier for higher accuracy
+Add 15-minute TTL cache to reduce redundant scraping

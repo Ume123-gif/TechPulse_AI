@@ -2,7 +2,7 @@
 A modular Python pipeline that scrapes live tech headlines, scores sentiment polarity, and visualizes trends through an interactive dashboard.
 
 # What It Does
-Tech news moves fast and reading through dozens of headlines to gauge industry sentiment is inefficient. TechPulse_AI scrapes headlines from Hacker News, classifies them as positive, negative, or neutral using NLP, and lets you filter by keyword to explore sentiment trends across topics like "AI", "crypto", or "Web3".
+> Tech news moves fast and reading through dozens of headlines to gauge industry sentiment is inefficient. TechPulse_AI scrapes headlines from Hacker News, classifies them as positive, negative, or neutral using NLP, and lets you filter by keyword to explore sentiment trends across topics like "AI", "crypto", or "Web3".
 
 # Tech Stack
 * Python — core pipeline
@@ -15,7 +15,7 @@ Tech news moves fast and reading through dozens of headlines to gauge industry s
 The project is split into two reusable OOP classes:
 * TechScraper — handles HTTP requests, HTML parsing, and error handling for failed/missing selectors
 * TechAnalyser — takes scraped headlines, scores polarity via TextBlob, and applies threshold-based sentiment labels (positive / negative / neutral)
-Streamlit Session State is used to persist scraped data across user interactions without re-fetching on every filter change.
+* Streamlit Session State is used to persist scraped data across user interactions without re-fetching on every filter change.
 
 # Current Limitations
 * Scrapes Hacker News only (single source)
